@@ -1,13 +1,23 @@
 body {
   font-family: Arial, sans-serif;
   background: #f5f6fa;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 让标题 + 卡片整体居中 */
+.center-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0;
-  margin: 0;
+  gap: 20px;
 }
 
+/* 悬浮标题 */
 .title-bubble {
   background: rgba(0, 123, 255, 0.15);
   color: #003366;
@@ -17,18 +27,16 @@ body {
   border-radius: 12px;
   backdrop-filter: blur(6px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  display: inline-block;
-  margin: 20px auto;
   text-align: center;
 }
 
+/* 卡片 */
 .container {
   background: white;
   padding: 20px;
   border-radius: 12px;
   max-width: 420px;
   width: 100%;
-  margin-top: 10px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
@@ -56,11 +64,6 @@ input, select {
   flex: 1;
 }
 
-.time-row button {
-  flex-shrink: 0;
-  padding: 8px 12px;
-}
-
 .main-btn {
   width: 100%;
   background: linear-gradient(45deg, #007bff, #3399ff);
@@ -71,10 +74,12 @@ input, select {
   margin-top: 20px;
   border-radius: 6px;
   cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
 }
 
 .main-btn:hover {
   background: linear-gradient(45deg, #0056b3, #267acc);
+  transform: translateY(-2px);
 }
 
 .btn-row {
@@ -92,10 +97,11 @@ input, select {
   border-radius: 6px;
 }
 
-.secondary-btn:hover {
-  background: #5a6268;
+.hidden {
+  display: none;
 }
 
+/* 结果动画 */
 #result {
   margin-top: 20px;
   text-align: center;
@@ -117,8 +123,10 @@ input, select {
 #result .time-diff {
   font-size: 0.9em;
   color: #666;
+  margin-top: 4px;
 }
 
+/* 右下角 credit */
 .credit-box {
   position: fixed;
   right: 10px;
@@ -129,8 +137,12 @@ input, select {
   border-radius: 999px;
   font-size: 0.75em;
   font-weight: 500;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   cursor: pointer;
   opacity: 0.6;
+  transition: all 0.3s ease;
+  z-index: 50;
 }
 
 .credit-box:hover {
@@ -139,6 +151,7 @@ input, select {
   transform: scale(1.05);
 }
 
+/* 弹窗 */
 .popup {
   position: fixed;
   bottom: 70px;
@@ -151,10 +164,48 @@ input, select {
   animation: popupIn 0.3s ease;
   max-width: 220px;
   font-size: 0.9em;
+  z-index: 1000;
   border: 2px solid #ffd6e0;
 }
 
 @keyframes popupIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* 深色模式 */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #121212;
+    color: #e0e0e0;
+  }
+  .title-bubble {
+    background: rgba(0, 60, 150, 0.6);
+    color: white;
+  }
+  .container {
+    background: #1e1e1e;
+    color: white;
+  }
+  input, select {
+    background: #3a3a3a;
+    color: white;
+    border: 1px solid #555;
+  }
+  .credit-box {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ddd;
+  }
+  .credit-box:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+  }
+  .popup {
+    background: #2a2a2a;
+    color: white;
+    border: 2px solid #ff7ab8;
+  }
+  #result .time-diff {
+    color: #bbb;
+  }
 }
