@@ -9,13 +9,13 @@ body {
   align-items: center;
 }
 
-/* 让标题 + 卡片整体居中 */
 .center-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 20px; /* 标题和卡片间距 */
 }
+
 
 /* 悬浮标题 */
 .title-bubble {
