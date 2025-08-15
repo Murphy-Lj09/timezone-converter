@@ -9,7 +9,7 @@ body {
   align-items: center;
 }
 
-/* 居中容器 */
+/* 让标题 + 卡片整体居中 */
 .center-wrapper {
   display: flex;
   flex-direction: column;
@@ -17,16 +17,16 @@ body {
   gap: 20px;
 }
 
-/* 紫色标题气泡 */
+/* 悬浮标题 */
 .title-bubble {
-  background: rgba(173, 153, 242, 0.85); /* 淡紫半透明 */
-  color: white;
+  background: rgba(0, 123, 255, 0.15);
+  color: #003366;
   font-weight: 600;
   font-size: 1.1em;
   padding: 8px 16px;
   border-radius: 12px;
   backdrop-filter: blur(6px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   text-align: center;
 }
 
@@ -64,10 +64,9 @@ input, select {
   flex: 1;
 }
 
-/* 主按钮 - 紫色渐变 */
 .main-btn {
   width: 100%;
-  background: linear-gradient(45deg, #a46cf2, #d093f5);
+  background: linear-gradient(45deg, #007bff, #3399ff);
   color: white;
   font-weight: bold;
   border: none;
@@ -79,11 +78,10 @@ input, select {
 }
 
 .main-btn:hover {
-  background: linear-gradient(45deg, #8e4ee7, #c379f0);
+  background: linear-gradient(45deg, #0056b3, #267acc);
   transform: translateY(-2px);
 }
 
-/* 次按钮 */
 .btn-row {
   display: flex;
   gap: 8px;
@@ -92,18 +90,11 @@ input, select {
 
 .secondary-btn {
   flex: 1;
-  background: #b18ae8;
+  background: #6c757d;
   color: white;
-  font-weight: bold;
   border: none;
   padding: 8px;
   border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.secondary-btn:hover {
-  background: #9d6ee0;
 }
 
 .hidden {
@@ -140,7 +131,7 @@ input, select {
   position: fixed;
   right: 10px;
   bottom: 10px;
-  background: rgba(173, 153, 242, 0.85);
+  background: rgba(173, 153, 242, 0.85); 
   color: white;
   padding: 4px 10px;
   border-radius: 999px;
@@ -189,7 +180,7 @@ input, select {
     color: #e0e0e0;
   }
   .title-bubble {
-    background: rgba(172, 153, 242, 0.6);
+    background: rgba(0, 60, 150, 0.6);
     color: white;
   }
   .container {
@@ -218,3 +209,4 @@ input, select {
     color: #bbb;
   }
 }
+
