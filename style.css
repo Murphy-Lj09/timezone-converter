@@ -1,20 +1,20 @@
 body {
   font-family: Arial, sans-serif;
   background: #f5f6fa;
-  padding: 0;
   margin: 0;
   height: 100vh;
+
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center;  /* 水平居中 */
+  align-items: center;      /* 垂直居中 */
 }
 
 .center-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px; /* 标题和卡片间距 */
 }
+
 
 
 /* 悬浮标题 */
