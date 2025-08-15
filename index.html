@@ -1,42 +1,50 @@
-<!-- Luxon -->
-<script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跨时区面试时间转换器</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+</head>
+<body>
 
-<!-- 悬浮标题 -->
-<div class="title-bubble">
-  跨时区面试时间转换器
-</div>
+    <div class="title-bubble">
+        跨时区面试时间转换器
+    </div>
 
-<div class="container">
-  <label>面试时间（面试官时区）:</label>
-  <div class="time-row">
-    <input type="datetime-local" id="interviewTime">
-    <button id="nowBtn">现在</button>
-  </div>
+    <div class="container">
+        <label>面试时间（面试官时区）:</label>
+        <div class="time-row">
+            <input type="datetime-local" id="interviewTime">
+            <button id="nowBtn">现在</button>
+        </div>
 
-  <label>面试官时区:</label>
-  <select id="interviewerTZ"></select>
+        <label>面试官时区:</label>
+        <select id="interviewerTZ"></select>
 
-  <label>面试者时区:</label>
-  <select id="candidateTZ"></select>
+        <label>面试者时区:</label>
+        <select id="candidateTZ"></select>
 
-  <button id="convertBtn" class="main-btn">转换时间</button>
+        <button id="convertBtn" class="main-btn">转换时间</button>
 
-  <div id="result"></div>
-  
-  <div class="btn-row">
-    <button id="downloadICS" class="hidden secondary-btn">下载日历提醒</button>
-    <button id="copyBtn" class="hidden secondary-btn">一键复制</button>
-  </div>
-</div>
+        <div id="result"></div>
+        
+        <div class="btn-row">
+            <button id="downloadICS" class="hidden secondary-btn">下载日历提醒</button>
+            <button id="copyBtn" class="hidden secondary-btn">一键复制</button>
+        </div>
+    </div>
 
-<!-- 右下角 Credit -->
-<div class="credit-box" id="creditBox">
-  🎁 点我有惊喜
-</div>
+    <div class="credit-box" id="creditBox">
+        🎁 点我有惊喜
+    </div>
 
-<!-- 弹窗 -->
-<div class="popup" id="popupBox">
-  🐱 谢谢使用！<br>
-  想合作或交流？<br>
-  ✉️ lim84356@gmail.com
-</div>
+    <div class="popup" id="popupBox">
+        联系我：<br>
+        ✉️ lim84356@gmail.com<br>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
