@@ -1,5 +1,6 @@
 const { DateTime } = luxon;
 
+// 常用时区
 const commonTimeZones = [
   { tz: "America/Los_Angeles", label: "Pacific Time (洛杉矶, 西雅图)" },
   { tz: "America/New_York", label: "Eastern Time (纽约, 华盛顿)" },
@@ -69,6 +70,7 @@ document.getElementById("convertBtn").addEventListener("click", () => {
     <div class="main-time">面试者本地时间: ${candidateTime.toFormat("yyyy-MM-dd HH:mm")}</div>
     <div class="time-diff">${diffText}</div>
   `;
+
   document.getElementById("result").classList.add("show");
 
   lastConverted = { start: candidateTime, summary: "面试提醒" };
@@ -110,6 +112,7 @@ document.getElementById("copyBtn").addEventListener("click", () => {
   });
 });
 
+// 弹窗交互
 const creditBox = document.getElementById("creditBox");
 const popupBox = document.getElementById("popupBox");
 
@@ -123,4 +126,3 @@ creditBox.addEventListener("click", () => {
     }, 5000);
   }
 });
-
