@@ -48,6 +48,7 @@ document.getElementById("nowBtn").addEventListener("click", setNow);
 
 let lastConverted = null;
 
+// 合并事件监听 + 淡入动画
 document.getElementById("convertBtn").addEventListener("click", () => {
   const interviewTime = document.getElementById("interviewTime").value;
   const interviewerTZ = document.getElementById("interviewerTZ").value;
@@ -70,7 +71,6 @@ document.getElementById("convertBtn").addEventListener("click", () => {
     <div class="main-time">面试者本地时间: ${candidateTime.toFormat("yyyy-MM-dd HH:mm")}</div>
     <div class="time-diff">${diffText}</div>
   `;
-
   document.getElementById("result").classList.add("show");
 
   lastConverted = { start: candidateTime, summary: "面试提醒" };
@@ -79,6 +79,7 @@ document.getElementById("convertBtn").addEventListener("click", () => {
   document.getElementById("copyBtn").classList.remove("hidden");
 });
 
+// 下载 ICS
 document.getElementById("downloadICS").addEventListener("click", () => {
   if (!lastConverted) return;
   
@@ -104,11 +105,20 @@ END:VCALENDAR
   link.click();
 });
 
+// 修复版一键复制
 document.getElementById("copyBtn").addEventListener("click", () => {
-  if (!lastConverted) return;
-  const text = document.getElementById("result").innerText;
-  navigator.clipboard.writeText(text).then(() => {
+  if (!lastConverted) {
+    alert("请先转换时间");
+    return;
+  }
+  
+  const copyText = `面试者本地时间: ${lastConverted.start.toFormat("yyyy-MM-dd HH:mm")}（面试提醒）`;
+  
+  navigator.clipboard.writeText(copyText).then(() => {
     alert("已复制到剪贴板");
+  }).catch(err => {
+    console.error("复制失败:", err);
+    alert("复制失败，请手动选择文字");
   });
 });
 
@@ -116,13 +126,15 @@ document.getElementById("copyBtn").addEventListener("click", () => {
 const creditBox = document.getElementById("creditBox");
 const popupBox = document.getElementById("popupBox");
 
-creditBox.addEventListener("click", () => {
-  if (popupBox.style.display === "block") {
+creditBox.addEventListener("click", (e) => {
+  e.stopPropagation();
+  popupBox.style.display = "block";
+  setTimeout(() => {
     popupBox.style.display = "none";
-  } else {
-    popupBox.style.display = "block";
-    setTimeout(() => {
-      popupBox.style.display = "none";
-    }, 5000);
-  }
+  }, 4000);
+});
+
+// 点击外部关闭
+document.addEventListener("click", () => {
+  popupBox.style.display = "none";
 });
