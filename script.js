@@ -1,6 +1,5 @@
 const { DateTime } = luxon;
 
-// 常用时区
 const commonTimeZones = [
   { tz: "America/Los_Angeles", label: "Pacific Time (洛杉矶, 西雅图)" },
   { tz: "America/New_York", label: "Eastern Time (纽约, 华盛顿)" },
@@ -78,8 +77,50 @@ document.getElementById("convertBtn").addEventListener("click", () => {
   document.getElementById("copyBtn").classList.remove("hidden");
 });
 
-// 下载日历文件
 document.getElementById("downloadICS").addEventListener("click", () => {
   if (!lastConverted) return;
   
-  const dtStart = lastConverted.start.toUTC().
+  const dtStart = lastConverted.start.toUTC().toFormat("yyyyMMdd'T'HHmmss'Z'");
+  const dtEnd = lastConverted.start.plus({ minutes: 30 }).toUTC().toFormat("yyyyMMdd'T'HHmmss'Z'");
+  
+  const icsContent = `
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:${lastConverted.summary}
+DTSTART:${dtStart}
+DTEND:${dtEnd}
+DESCRIPTION:跨时区面试提醒
+END:VEVENT
+END:VCALENDAR
+  `.trim();
+
+  const blob = new Blob([icsContent], { type: "text/calendar" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "面试提醒.ics";
+  link.click();
+});
+
+document.getElementById("copyBtn").addEventListener("click", () => {
+  if (!lastConverted) return;
+  const text = document.getElementById("result").innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    alert("已复制到剪贴板");
+  });
+});
+
+const creditBox = document.getElementById("creditBox");
+const popupBox = document.getElementById("popupBox");
+
+creditBox.addEventListener("click", () => {
+  if (popupBox.style.display === "block") {
+    popupBox.style.display = "none";
+  } else {
+    popupBox.style.display = "block";
+    setTimeout(() => {
+      popupBox.style.display = "none";
+    }, 5000);
+  }
+});
+
