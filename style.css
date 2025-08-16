@@ -4,8 +4,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;   /* 新增：让内容垂直居中 */
-  min-height: 100vh;        /* 新增：撑满整个屏幕高度 */
+  justify-content: center;   /* 让内容垂直居中 */
+  min-height: 100vh;        /* 撑满整个屏幕高度 */
   padding: 20px;
   margin: 0;
 }
