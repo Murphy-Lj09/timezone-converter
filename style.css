@@ -216,4 +216,9 @@ input, select {
     padding: 10px;     /* 按钮不要太厚 */
   }
 }
+.secondary-btn .sub-label {
+  font-size: 0.75em;   /* 字体缩小 */
+  opacity: 0.7;        /* 半透明 */
+  font-weight: normal; /* 不要加粗 */
+}
 
