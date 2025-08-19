@@ -42,11 +42,33 @@
     <div id="result"></div>
     
     <div class="btn-row">
-      <button id="downloadICS" class="hidden secondary-btn">下载日历提醒</button>
       <button id="copyBtn" class="hidden secondary-btn">一键复制<br> 
        <span class="sub-label">面试当地时间</span>
       </button>
+      <button id="downloadICS" class="hidden secondary-btn">下载日历提醒</button>
     </div>
+  </div>
+
+  <!-- 高级选项弹窗 -->
+  <div class="advanced-options-modal" id="advancedModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>高级选项</h3>
+        <button class="close-btn" id="closeAdvanced">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label for="duration">面试时长（分钟）:</label>
+        <input type="number" id="duration" value="30" min="1">
+        <label for="calname">日历名称:</label>
+        <input type="text" id="calname" value="">
+        <label for="description">日历描述:</label>
+        <input type="text" id="description" value="">
+        <label for="summary">日历摘要:</label>
+        <input type="text" id="summary" value="">
+      </div>
+      <div class="download-container">
+        <button class="download" id="download">下载</button>
+      </div>
   </div>
 
   <!-- 右下角 Credit -->

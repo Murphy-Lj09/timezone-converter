@@ -81,19 +81,35 @@ document.getElementById("convertBtn").addEventListener("click", () => {
 
 // 下载 ICS
 document.getElementById("downloadICS").addEventListener("click", () => {
-  if (!lastConverted) return;
-  
+  if (!lastConverted) {
+    alert("请先转换时间");
+    return;
+  }
+
+  advancedModal.style.display = "flex";
+});
+
+
+document.getElementById("download").addEventListener("click", () => {
+  console.log("开始下载 ICS 文件"); 
+  const duration = parseInt(document.getElementById("duration").value) || 30;
   const dtStart = lastConverted.start.toUTC().toFormat("yyyyMMdd'T'HHmmss'Z'");
-  const dtEnd = lastConverted.start.plus({ minutes: 30 }).toUTC().toFormat("yyyyMMdd'T'HHmmss'Z'");
-  
+  const dtEnd = lastConverted.start.plus({ minutes: duration }).toUTC().toFormat("yyyyMMdd'T'HHmmss'Z'");
+  const description = document.getElementById("description").value || "跨时区面试提醒";
+  const calName = document.getElementById("calname").value || "跨时区面试日历";
+  const summary = document.getElementById("summary").value || "面试提醒";
+
   const icsContent = `
 BEGIN:VCALENDAR
 VERSION:2.0
+CALSCALE:GREGORIAN
+X-WR-CALNAME:${calName}
+X-WR-TIMEZONE:${document.getElementById("candidateTZ").value}
 BEGIN:VEVENT
-SUMMARY:${lastConverted.summary}
 DTSTART:${dtStart}
 DTEND:${dtEnd}
-DESCRIPTION:跨时区面试提醒
+DESCRIPTION:${description}
+SUMMARY:${summary}
 END:VEVENT
 END:VCALENDAR
   `.trim();
@@ -104,6 +120,7 @@ END:VCALENDAR
   link.download = "面试提醒.ics";
   link.click();
 });
+
 
 // 修复版一键复制
 document.getElementById("copyBtn").addEventListener("click", () => {
@@ -137,4 +154,26 @@ creditBox.addEventListener("click", (e) => {
 // 点击外部关闭
 document.addEventListener("click", () => {
   popupBox.style.display = "none";
+});
+
+// 高级选项模态框
+const advancedModal = document.getElementById("advancedModal");
+const closeAdvanced = document.getElementById("closeAdvanced");
+
+closeAdvanced.addEventListener("click", () => {
+  advancedModal.style.display = "none";
+});
+
+// 点击模态框背景关闭
+advancedModal.addEventListener("click", (e) => {
+  if (e.target === advancedModal) {
+    advancedModal.style.display = "none";
+  }
+});
+
+// ESC键关闭模态框
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    advancedModal.style.display = "none";
+  }
 });
