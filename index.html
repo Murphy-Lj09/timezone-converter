@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S1B4LKNQH6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S1B4LKNQH6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-S1B4LKNQH6');
-</script>
+    gtag('config', 'G-S1B4LKNQH6');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>跨时区面试时间转换器</title>
@@ -17,45 +18,55 @@
   <!-- Luxon -->
   <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
 </head>
+
 <body>
 
-  <!-- 悬浮标题 -->
-  <div class="title-bubble">
-    🌐跨时区面试时间转换器
+  <!-- 标题区域 -->
+  <div class="title-section">
+    <!-- 悬浮标题 -->
+    <div class="title-bubble" data-translate="title-bubble">
+      🌐跨时区面试时间转换器
+    </div>
+
+    <!-- 语言切换按钮 -->
+    <button id="languageToggle" class="language-toggle" title="Switch Language / 切换语言">
+      <span class="lang-text">EN</span>
+    </button>
   </div>
 
   <div class="container">
-    <label>面试时间（面试官时区）:</label>
+    <label data-translate="interview-time-label">面试时间（面试官时区）:</label>
     <div class="time-row">
       <input type="datetime-local" id="interviewTime">
-      <button id="nowBtn">现在</button>
+      <button id="nowBtn" data-translate="now-btn">现在</button>
     </div>
 
-    <label>面试官时区:</label>
+    <label data-translate="interviewer-tz-label">面试官时区:</label>
     <select id="interviewerTZ"></select>
 
-    <label>面试者时区:</label>
+    <label data-translate="candidate-tz-label">面试者时区:</label>
     <select id="candidateTZ"></select>
 
-    <button id="convertBtn" class="main-btn">转换时间</button>
+    <button id="convertBtn" class="main-btn" data-translate="convert-btn">转换时间</button>
 
     <div id="result"></div>
-    
+
     <div class="btn-row">
-      <button id="downloadICS" class="hidden secondary-btn">下载日历提醒</button>
-      <button id="copyBtn" class="hidden secondary-btn">一键复制<br> 
-       <span class="sub-label">面试当地时间</span>
+      <button id="downloadICS" class="hidden secondary-btn" data-translate="download-ics-btn">下载日历提醒</button>
+      <button id="copyBtn" class="hidden secondary-btn">
+        <span data-translate="copy-btn">一键复制</span><br>
+        <span class="sub-label" data-translate="copy-btn-sub">面试当地时间</span>
       </button>
     </div>
   </div>
 
   <!-- 右下角 Credit -->
-  <div class="credit-box" id="creditBox">
+  <div class="credit-box" id="creditBox" data-translate="credit-box">
     🎁 点我有惊喜
   </div>
 
   <!-- 弹窗 -->
-  <div class="popup" id="popupBox">
+  <div class="popup" id="popupBox" data-translate="popup-text">
     🐱 谢谢使用！<br>
     想合作或交流？<br>
     ✉️ lim84356@gmail.com
@@ -63,5 +74,5 @@
 
   <script src="script.js"></script>
 </body>
-</html>
 
+</html>

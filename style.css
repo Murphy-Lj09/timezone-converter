@@ -4,12 +4,23 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;   
-  min-height: 100vh;        /* 撑满整个屏幕高度 */
+  justify-content: center;
+  min-height: 100vh;
+  /* 撑满整个屏幕高度 */
   padding: 20px;
   margin: 0;
 }
 
+
+/* 标题区域 */
+.title-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px auto;
+  flex-wrap: wrap;
+}
 
 /* 悬浮标题 */
 .title-bubble {
@@ -20,9 +31,52 @@ body {
   padding: 8px 16px;
   border-radius: 12px;
   backdrop-filter: blur(6px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  margin: 20px auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   text-align: center;
+  flex-shrink: 0;
+  line-height: 1.1em;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 语言切换按钮 */
+.language-toggle {
+  background: linear-gradient(45deg, #007bff, #3399ff);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 1.1em;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  backdrop-filter: blur(6px);
+  text-align: center;
+  line-height: 1.1em;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+.language-toggle:hover {
+  background: linear-gradient(45deg, #0056b3, #267acc);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.language-toggle:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.language-toggle .lang-text {
+  font-size: 1em;
 }
 
 .container {
@@ -32,9 +86,10 @@ body {
   max-width: 420px;
   width: 100%;
   margin-top: 10px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 
-  box-sizing: border-box;  /* 新增：避免手机上溢出 */
+  box-sizing: border-box;
+  /* 新增：避免手机上溢出 */
 }
 
 
@@ -44,7 +99,8 @@ label {
   font-weight: bold;
 }
 
-input, select {
+input,
+select {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
@@ -80,6 +136,7 @@ input, select {
   cursor: pointer;
   transition: transform 0.2s ease, background 0.3s ease;
 }
+
 .main-btn:hover {
   background: linear-gradient(45deg, #0056b3, #267acc);
   transform: translateY(-2px);
@@ -91,6 +148,7 @@ input, select {
   gap: 8px;
   margin-top: 15px;
 }
+
 .secondary-btn {
   flex: 1;
   background: #6c757d;
@@ -101,6 +159,7 @@ input, select {
   border-radius: 6px;
   cursor: pointer;
 }
+
 .secondary-btn:hover {
   background: #5a6268;
 }
@@ -113,14 +172,17 @@ input, select {
   transform: translateY(5px);
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
+
 #result.show {
   opacity: 1;
   transform: translateY(0);
 }
+
 #result .main-time {
   font-size: 1.2em;
   font-weight: bold;
 }
+
 #result .time-diff {
   font-size: 0.9em;
   color: #666;
@@ -143,6 +205,7 @@ input, select {
   transition: all 0.3s ease;
   z-index: 999;
 }
+
 .credit-box:hover {
   background: rgba(0, 123, 255, 0.6);
   opacity: 1;
@@ -157,13 +220,14 @@ input, select {
   background: white;
   padding: 10px 14px;
   border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
   display: none;
   animation: popupIn 0.3s ease;
   max-width: 220px;
   font-size: 0.85em;
   border: 1px solid #ddd;
 }
+
 .popup::after {
   content: "";
   position: absolute;
@@ -173,9 +237,17 @@ input, select {
   border-style: solid;
   border-color: white transparent transparent transparent;
 }
+
 @keyframes popupIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* 深色模式 */
@@ -184,41 +256,86 @@ input, select {
     background: #121212;
     color: #e0e0e0;
   }
+
   .title-bubble {
     background: rgba(0, 60, 150, 0.6);
     color: white;
   }
+
   .container {
     background: #1e1e1e;
     color: #e0e0e0;
   }
-  input, select {
+
+  input,
+  select {
     background: #3a3a3a;
     color: white;
     border: 1px solid #555;
   }
+
   .popup {
     background: #2a2a2a;
     color: #fff;
     border: 1px solid #555;
   }
+
   .popup::after {
     border-color: #2a2a2a transparent transparent transparent;
   }
+
+  .language-toggle {
+    background: linear-gradient(45deg, #0056b3, #267acc);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .language-toggle:hover {
+    background: linear-gradient(45deg, #004494, #1e5fa3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
 }
+
 @media (max-width: 480px) {
   .container {
-    width: 90%;   /* 手机上卡片只占 90% 宽度 */
+    width: 90%;
+    /* 手机上卡片只占 90% 宽度 */
   }
 
-  .main-btn, .secondary-btn {
-    font-size: 0.9em;  /* 按钮字小一点 */
-    padding: 10px;     /* 按钮不要太厚 */
+  .main-btn,
+  .secondary-btn {
+    font-size: 0.9em;
+    /* 按钮字小一点 */
+    padding: 10px;
+    /* 按钮不要太厚 */
+  }
+
+  .title-section {
+    flex-direction: column;
+    gap: 8px;
+    margin: 15px auto;
+  }
+
+  .title-bubble {
+    font-size: 1em;
+    padding: 6px 12px;
+  }
+
+  .language-toggle {
+    padding: 6px 12px;
+    font-size: 1em;
+    min-width: 36px;
+  }
+
+  .language-toggle .lang-text {
+    font-size: 1em;
   }
 }
+
 .secondary-btn .sub-label {
-  font-size: 0.75em;   /* 字体缩小 */
-  opacity: 0.7;        /* 半透明 */
-  font-weight: normal; /* 不要加粗 */
+  font-size: 0.75em;
+  /* 字体缩小 */
+  opacity: 0.7;
+  /* 半透明 */
+  font-weight: normal;
+  /* 不要加粗 */
 }
-
